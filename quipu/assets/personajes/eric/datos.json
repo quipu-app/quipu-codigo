@@ -1,0 +1,54 @@
+{
+  "nombre": "Eric",
+  "titulo": "El inventor de Quipu",
+  "anfitrion": true,
+  "frases": {
+    "saluda": "¡Hola! Soy Eric, el que inventó Quipu",
+    "presenta": "Te presento a Quipu, tu nuevo compañero de escritorio",
+    "senala": "Elegí quién te va a acompañar",
+    "sonrie": "¡Qué bueno que estés acá!",
+    "festeja": "¡Bienvenido a la familia Quipu!",
+    "guino": "Este va a ser un gran equipo",
+    "piensa": "Mmm… ¿con quién te quedás?",
+    "ajustes_nombre": "¡Un gusto, {nombre}!"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.45,
+      "grilla": { "columnas": 5, "cuadro_ancho": 405, "cuadro_alto": 667 },
+      "cara": { "x": 205, "y": 140 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "sonrie_der": 3,
+        "mira_izq": 4, "mira_der": 5, "saluda": 6, "agachado": 7, "salto": 8
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie_der"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.5,
+      "grilla": { "columnas": 6, "cuadro_ancho": 592, "cuadro_alto": 608 },
+      "cara": { "x": 296, "y": 215 },
+      "cuadros": {
+        "mira_frente": 0, "mira_izq": 1, "mira_der": 2,
+        "mira_arriba": 3, "mira_abajo": 4,
+        "mira_arriba_izq": 5, "mira_arriba_der": 6,
+        "mira_abajo_izq": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "sonrie": 10, "hablando": 11,
+        "saluda": 12, "festeja": 13, "senala": 14,
+        "presenta": 15, "guino": 16, "piensa": 17
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_abajo", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "presenta", "sonrie", "guino"],
+      "acciones_solo": ["guino", "piensa"]
+    }
+  }
+}

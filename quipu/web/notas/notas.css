@@ -1,0 +1,187 @@
+@font-face { font-family: Fredoka; src: url("../../assets/fuentes/Fredoka.ttf"); }
+
+* { box-sizing: border-box; }
+html { background: transparent; height: 100%; }
+body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: #CFEFF8; color: #17324D; border-radius: 9px;
+  font-family: Fredoka, "Segoe UI", sans-serif; font-size: 13px;
+}
+
+section { height: 100%; display: flex; flex-direction: column; gap: 7px; padding: 10px; }
+section[hidden] { display: none; }
+
+/* Encabezado y teclas */
+.encabezado { display: flex; align-items: center; gap: 6px; }
+.titulo { flex: 1; font-size: 17px; font-weight: 600; }
+.tecla {
+  font: inherit; font-weight: 500; cursor: pointer;
+  background: var(--tema-suave); color: var(--tema-muy-oscuro);
+  border: 1px solid var(--tema-oscuro); border-radius: 7px; padding: 3px 10px;
+}
+.tecla:hover { background: var(--tema-claro); }
+.tecla:active, .tecla.activa { background: var(--tema); color: var(--tema-texto); box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25); }
+.tecla.chica {
+  width: 25px; height: 24px; padding: 0; font-size: 13px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.cursiva { font-family: Georgia, serif; }
+#btn-fijar.activa { color: #B8541A; }
+
+/* Campos de texto */
+.buscar, .campo-titulo {
+  font: inherit; color: #17324D; outline: none;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 7px; padding: 5px 9px;
+}
+.buscar:focus, .campo-titulo:focus { border-color: var(--tema); }
+.campo-titulo { flex: 1; min-width: 0; font-size: 15px; font-weight: 600; }
+
+/* Chips de carpetas */
+.chips { display: flex; gap: 4px; overflow-x: auto; flex: none; }
+.chips:empty { display: none; }
+.chip {
+  font: inherit; font-size: 12px; white-space: nowrap; cursor: pointer; color: #17324D;
+  background: #F4FBFD; border: 1px solid #BFDCE6; border-radius: 12px; padding: 2px 9px;
+}
+.chip.activo { background: var(--tema-suave); border-color: var(--tema); }
+.chip small { color: #6E8A9E; }
+.punto { display: inline-block; flex: none; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+
+/* Lista de notas */
+.lista { flex: 1; overflow-y: auto; }
+.nota {
+  display: flex; gap: 8px; align-items: flex-start; cursor: pointer;
+  padding: 7px 4px; border-bottom: 1px solid #BFDCE6; border-radius: 6px;
+}
+.nota:hover { background: #E4F6FB; }
+.nota .punto { margin-top: 5px; }
+.cuerpo { flex: 1; min-width: 0; }
+.cuerpo b, .resumen { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cuerpo b { font-weight: 600; }
+.resumen { color: #4A6A82; }
+.fecha { flex: none; color: #6E8A9E; }
+.vacio { color: #4A6A82; text-align: center; margin-top: 30px; }
+
+/* Aviso "Nota borrada · Deshacer" */
+.aviso {
+  display: flex; align-items: center; justify-content: space-between; flex: none;
+  background: #2B3A55; color: #FFFFFF; border-radius: 8px; padding: 5px 8px;
+}
+.aviso[hidden] { display: none; }
+
+/* Barra de formato */
+.barra { display: flex; gap: 3px; flex: none; }
+.rueda {
+  width: 13px; height: 13px; border-radius: 50%; border: 1px solid #2B2B33;
+  background: conic-gradient(#E5484D, #F2994A, #F2C230, #27AE60, #2F80ED, #9B51E0, #E5484D);
+}
+.paleta {
+  display: flex; gap: 7px; flex: none;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 8px; padding: 6px 8px;
+}
+.paleta[hidden] { display: none; }
+.paleta button { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #2B2B33; cursor: pointer; }
+
+/* Texto de la nota */
+.texto {
+  flex: 1; overflow-y: auto; outline: none; line-height: 1.5;
+  background: #FFFFFF; border: 1px solid #8FB9C8; border-radius: 7px; padding: 8px 10px;
+}
+.texto:empty::before { content: attr(data-placeholder); color: #8AA5B8; }
+.texto img { max-width: 100%; display: block; margin: 6px 0; border-radius: 6px; }
+.texto ul { margin: 4px 0; padding-left: 20px; }
+.caja { cursor: pointer; user-select: none; font-size: 1.1em; margin-right: 3px; }
+.caja.hecha { color: #27AE60; }
+
+/* Pie: carpeta, borrar y listo */
+.pie { display: flex; align-items: center; gap: 6px; }
+.espacio { flex: 1; }
+.selector { position: relative; }
+.menu {
+  position: absolute; left: 0; bottom: 28px; z-index: 5; min-width: 150px;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 8px; padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+.menu[hidden] { display: none; }
+.menu button {
+  display: flex; align-items: center; width: 100%; text-align: left; cursor: pointer;
+  font: inherit; color: #17324D; background: none; border: none; border-radius: 6px; padding: 4px 6px;
+}
+.menu button:hover { background: #E4F6FB; }
+
+/* Barras de desplazamiento finitas, del color de Quipu */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: #8FB9C8; border-radius: 3px; }
+
+/* Panel del QR, encima del editor */
+#editor { position: relative; }
+.panel {
+  position: absolute; inset: 0; z-index: 10; border-radius: 9px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  background: #CFEFF8;
+}
+.panel[hidden] { display: none; }
+.panel img { width: 170px; height: 170px; image-rendering: pixelated; background: #FFFFFF; border-radius: 8px; }
+.ayuda { margin: 0; color: #4A6A82; text-align: center; padding: 0 20px; }
+
+/* Panel para crear una carpeta */
+.panel-carpeta {
+  display: flex; flex-direction: column; gap: 7px; flex: none;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 8px; padding: 8px;
+}
+.panel-carpeta[hidden] { display: none; }
+.fila-colores { display: flex; gap: 9px; padding: 2px 4px; }
+.fila-colores button { width: 20px; height: 20px; border-radius: 50%; border: 1px solid #2B2B33; cursor: pointer; }
+.fila-colores button.elegido { box-shadow: 0 0 0 2px #F4FBFD, 0 0 0 4px #17324D; }
+.fila-botones { display: flex; justify-content: flex-end; gap: 6px; }
+
+/* Arrastrar notas para reordenarlas */
+.nota.arrastrando { opacity: .4; }
+.nota.sobre { box-shadow: inset 0 2px 0 var(--tema); }
+
+.chip.arrastrando { opacity: .4; }
+.chip.sobre { box-shadow: inset 2px 0 0 var(--tema); }
+
+/* Pestañas: Todo, Sueltas, Carpetas */
+.pestanas { display: flex; gap: 3px; flex: none; background: #B7DDE9; border-radius: 9px; padding: 3px; }
+.pestana {
+  flex: 1; font: inherit; font-size: 12px; font-weight: 500; cursor: pointer;
+  background: transparent; color: #3A5A78; border: none; border-radius: 7px; padding: 4px 0;
+}
+.pestana.activa { background: #F4FBFD; color: #17324D; box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+
+/* Camino de vuelta al estar adentro de una carpeta */
+.migas { display: flex; align-items: center; gap: 6px; flex: none; font-size: 15px; font-weight: 600; }
+.migas[hidden] { display: none; }
+
+/* Tarjetas de carpetas */
+.grilla { flex: 1; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: start; }
+.grilla[hidden] { display: none; }
+.carpeta {
+  display: flex; flex-direction: column; gap: 4px; cursor: pointer; text-align: left;
+  font: inherit; color: #17324D; background: #F4FBFD; border: 1px solid #BFDCE6;
+  border-radius: 10px; padding: 8px 10px; border-top-width: 5px;
+}
+.carpeta:hover { background: #E4F6FB; }
+.carpeta b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.carpeta small { color: #6E8A9E; }
+.carpeta.arrastrando { opacity: .4; }
+.carpeta.sobre { box-shadow: inset 3px 0 0 var(--tema); }
+
+/* Colaborar */
+.colab-titulo { font-size: 16px; font-weight: 600; }
+.colab-bloque { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.colab-bloque[hidden] { display: none; }
+.codigo {
+  font-size: 26px; font-weight: 700; letter-spacing: 3px; user-select: all;
+  background: #FFFFFF; border: 1px solid #8FB9C8; border-radius: 8px; padding: 6px 14px;
+}
+.fila-codigo { display: flex; gap: 6px; }
+.fila-codigo .buscar { width: 120px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+.compartida { margin-left: 4px; font-size: 11px; }
+
+/* Guardar: elegir dónde */
+.menu-derecha { left: auto; right: 0; }
+.menu-titulo { display: block; padding: 2px 6px 4px; color: #6E8A9E; font-size: 11px; }
+.menu button.actual { background: var(--tema-suave); font-weight: 600; }
+.pie .tecla { padding: 3px 8px; }

@@ -1,0 +1,77 @@
+{
+  "consola": "#488848",
+  "detalle": "#D57346",
+  "nombre": "Pachamama",
+  "titulo": "La Madre Tierra de Quipu",
+  "frases": {
+    "saluda": "¡Bienvenido! Qué lindo verte",
+    "festeja": "¡Eso es! La tierra festeja con vos",
+    "senala": "Mirá por acá",
+    "sonrie": "Todo a su tiempo",
+    "escucha": "Escuchá… ¿oís eso?",
+    "disfruta": "Qué paz…",
+    "quena": "Un poquito de música",
+    "mece": "Dejate llevar",
+    "mate": "Un mate compartido es mejor",
+    "bosteza": "La tierra también descansa…",
+    "foco_inicio": "Sembramos la primera semilla",
+    "foco_seguimos": "Paso a paso, como crece el árbol",
+    "foco_falta_poco": "Ya casi florece",
+    "foco_fin": "¡Cosechaste tu esfuerzo!",
+    "tiempo_paraguas": "Llueve: la tierra está agradecida",
+    "tiempo_frio": "Hace frío, abrigate bien",
+    "tiempo_sol": "El sol nos regala su calor",
+    "tiempo_nubes": "Las nubes traen descanso",
+    "sonidos_hola": "¿Qué sonido de la tierra querés?",
+    "sonidos_disfruta": "La naturaleza te abraza…",
+    "agenda_hola": "Cada cosa a su tiempo, veamos…",
+    "agenda_guardado": "Sembrado en la agenda",
+    "imagen_lista": "Ya floreció tu imagen",
+    "qr_listo": "Tu código, listo para compartir",
+    "txt_listo": "Guardado, como una semilla",
+    "ajustes_hola": "Acomodemos todo con calma",
+    "ajustes_chau": "Que la tierra te acompañe",
+    "ajustes_relevo": "Vuelvo a la tierra, ¡ahí llega quien te acompaña!",
+    "ajustes_nombre": "{nombre}, qué lindo nombre"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.48,
+      "grilla": { "columnas": 4, "cuadro_ancho": 300, "cuadro_alto": 640 },
+      "cara": { "x": 150, "y": 130 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "mira_izq": 3,
+        "mira_der": 4, "saluda": 5, "agachado": 6, "salto": 7
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.5,
+      "ajuste_asomarse": -20,
+      "grilla": { "columnas": 6, "cuadro_ancho": 520, "cuadro_alto": 470 },
+      "cara": { "x": 260, "y": 180 },
+      "cuadros": {
+        "mira_arriba_izq": 0, "mira_arriba": 1, "mira_arriba_der": 2,
+        "mira_izq": 0, "mira_frente": 4, "mira_der": 3,
+        "mira_abajo_izq": 6, "mira_abajo": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "hablando": 10, "sonrie": 11, "sorpresa": 12,
+        "saluda": 13, "festeja": 14, "senala": 15,
+        "escucha": 16, "disfruta": 17, "quena": 18, "mece": 19,
+        "mate": 20, "bosteza": 21
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_frente", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "senala", "sonrie", "quena"],
+      "acciones_solo": ["mate", "mece", "escucha", "bosteza"]
+    }
+  }
+}

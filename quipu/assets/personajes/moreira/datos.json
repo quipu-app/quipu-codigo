@@ -1,0 +1,74 @@
+{
+  "nombre": "Juan Moreira",
+  "titulo": "El gaucho de Quipu",
+  "consola":"#3A5A93",
+  "detalle": "#B6C0C9",
+  "frases": {
+    "saluda": "¡Buenas, compañero!",
+    "festeja": "¡Vamos todavía!",
+    "senala": "¡Mirá eso!",
+    "sonrie": "¿Unos mates?",
+    "mate": "Un amargo y seguimos",
+    "bosteza": "Qué siestita…",
+    "piensa": "Mmm… dejame pensar",
+    "foco_inicio": "¡A la carga, compañero! Yo cebo mientras",
+    "foco_seguimos": "Sigamos, que el mate no se enfría solo",
+    "foco_falta_poco": "Ya se ve la tranquera, ¡aguante!",
+    "foco_fin": "¡Faena cumplida, paisano!",
+    "tiempo_paraguas": "Se viene el agua, llevá el poncho",
+    "tiempo_frio": "Fresco pa' andar en el campo: abrigate",
+    "tiempo_sol": "¡Lindo día pa' salir a caballo!",
+    "tiempo_nubes": "Nublado… tiempo de mate y guitarra",
+    "sonidos_hola": "¿Qué querés escuchar, compañero?",
+    "sonidos_disfruta": "Así suena el campo…",
+    "agenda_hola": "A ver qué tenemos en la libreta…",
+    "agenda_guardado": "¡Anotado, no se escapa!",
+    "imagen_lista": "Listo, ya está la imagen",
+    "qr_listo": "Ahí tenés el código, compañero",
+    "txt_listo": "Listo, guardado",
+    "ajustes_hola": "Acá se arregla todo a tu gusto",
+    "ajustes_chau": "¡Hasta la vuelta, compañero!",
+    "ajustes_relevo": "Me voy al galope, ¡ahí viene el relevo!",
+    "ajustes_nombre": "¡Un gusto, {nombre}!"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.45,
+      "grilla": { "columnas": 5, "cuadro_ancho": 425, "cuadro_alto": 680 },
+      "cara": { "x": 212, "y": 120 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "sonrie_der": 3,
+        "mira_izq": 4, "mira_der": 5, "saluda": 6, "agachado": 7, "salto": 8
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie_der"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.5,
+      "grilla": { "columnas": 6, "cuadro_ancho": 520, "cuadro_alto": 620 },
+      "cara": { "x": 260, "y": 140 },
+      "cuadros": {
+        "mira_frente": 0, "mira_izq": 1, "mira_der": 2,
+        "mira_arriba": 3, "mira_abajo": 4,
+        "mira_arriba_izq": 5, "mira_arriba_der": 6,
+        "mira_abajo_izq": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "sonrie": 10, "hablando": 11,
+        "saluda": 12, "festeja": 13, "senala": 14,
+        "mate": 15, "bosteza": 16, "piensa": 17
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_abajo", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "senala", "sonrie", "mate"],
+      "boton_cerrar": { "x": 376, "y": 1242, "r": 50 },
+      "acciones_solo": ["mate", "bosteza", "piensa"]
+    }
+  }
+}

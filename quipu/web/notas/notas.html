@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../tema.css">
+  <link rel="stylesheet" href="notas.css">
+  <script src="qwebchannel.js"></script>
+  <script src="notas.js" defer></script>
+</head>
+<body>
+
+  <!-- Inicio: lista de notas -->
+  <section id="inicio">
+    <header class="encabezado">
+      <span class="titulo">Notas</span>
+      <button class="tecla" id="btn-carpeta-nueva">+ Carpeta</button>
+      <button class="tecla" id="btn-nueva">+ Nota</button>
+    </header>
+    <input id="buscar" class="buscar" placeholder="Buscar en tus notas…">
+    <div id="panel-carpeta" class="panel-carpeta" hidden>
+      <input id="nombre-carpeta" class="buscar" placeholder="Nombre de la carpeta">
+      <div class="fila-colores" id="colores-carpeta"></div>
+      <div class="fila-botones">
+        <button class="tecla" id="btn-cancelar-carpeta">Cancelar</button>
+        <button class="tecla" id="btn-crear-carpeta">Crear</button>
+      </div>
+    </div>
+    <div class="pestanas" id="pestanas">
+      <button class="pestana activa" data-vista="todo">Todo</button>
+      <button class="pestana" data-vista="sueltas">Sueltas</button>
+      <button class="pestana" data-vista="carpetas">Carpetas</button>
+    </div>
+    <div id="migas" class="migas" hidden>
+      <button class="tecla" id="btn-salir-carpeta">‹</button>
+      <span class="punto" id="punto-abierta"></span>
+      <span id="nombre-abierta"></span>
+    </div>
+    <div id="grilla" class="grilla" hidden></div>
+    <div id="lista" class="lista"></div>
+    <p id="vacio" class="vacio" hidden>Todavía no hay notas. Tocá «+ Nota» para escribir la primera.</p>
+    <div id="aviso" class="aviso" hidden>
+      <span>Nota borrada</span><button class="tecla" id="btn-deshacer">Deshacer</button>
+    </div>
+  </section>
+
+  <!-- Editor de una nota -->
+  <section id="editor" hidden>
+    <header class="encabezado">
+      <button class="tecla" id="btn-volver" title="Volver">‹</button>
+      <input id="titulo" class="campo-titulo" placeholder="Título">
+      <button class="tecla" id="btn-fijar" title="Fijar arriba">★</button>
+    </header>
+
+    <div class="barra" id="barra">
+      <button class="tecla chica" data-cmd="bold" title="Negrita"><b>B</b></button>
+      <button class="tecla chica" data-cmd="italic" title="Cursiva"><i class="cursiva">I</i></button>
+      <button class="tecla chica" data-cmd="underline" title="Subrayado"><u>U</u></button>
+      <button class="tecla chica" id="btn-menos" title="Letra más chica">A-</button>
+      <button class="tecla chica" id="btn-mas" title="Letra más grande">A+</button>
+      <button class="tecla chica" id="btn-color" title="Color de letra"><span class="rueda"></span></button>
+      <button class="tecla chica" id="btn-resaltar" title="Resaltar">
+        <svg viewBox="0 0 16 16" width="15" height="15">
+          <rect x="1" y="12.5" width="14" height="2.5" rx="1" fill="#FFF176"/>
+          <g transform="rotate(-40 8 7)">
+            <rect x="5.5" y="1" width="5" height="9" rx="1" fill="#F2C230" stroke="#2B2B33" stroke-width="1"/>
+            <rect x="5.5" y="1" width="5" height="2.5" fill="#2B2B33"/>
+            <path d="M6 10 L10 10 L9 12.5 L7 12.5 Z" fill="#FFF176" stroke="#2B2B33" stroke-width=".8"/>
+          </g>
+        </svg>
+      </button>
+      <button class="tecla chica" id="btn-casilla" title="Casilla">☐</button>
+      <button class="tecla chica" data-cmd="insertUnorderedList" title="Viñetas">•</button>
+      <button class="tecla chica" id="btn-alinear" title="Alinear"></button>
+      <button class="tecla chica" id="btn-imagen" title="Agregar imagen">
+        <svg viewBox="0 0 16 16" width="15" height="15">
+          <rect x="1" y="2" width="14" height="12" rx="2" fill="#FFFFFF" stroke="#2B2B33"/>
+          <circle cx="11" cy="6" r="1.6" fill="#F2C230"/>
+          <path d="M2 13 L6 8 L9 11 L11 9 L14 13 Z" fill="#27AE60"/>
+        </svg>
+      </button>
+    </div>
+    <div id="paleta" class="paleta" hidden></div>
+
+    <div id="texto" class="texto" contenteditable="true" data-placeholder="Escribí tu nota…"></div>
+
+    <footer class="pie">
+      <span class="espacio"></span>
+      <button class="tecla" id="btn-colaborar" title="Compartir con otra persona">Colaborar</button>
+      <button class="tecla" id="btn-qr" title="Llevar al celu">QR</button>
+      <button class="tecla" id="btn-txt" title="Exportar como texto">TXT</button>
+      <button class="tecla" id="btn-borrar">Borrar</button>
+      <div class="selector">
+        <button class="tecla" id="btn-listo">Guardar ▾</button>
+        <div id="menu-carpetas" class="menu menu-derecha" hidden></div>
+      </div>
+    </footer>
+
+    <!-- Panel del QR, encima del editor -->
+    <div id="panel-qr" class="panel" hidden>
+      <img id="img-qr" alt="Código QR de la nota">
+      <p id="texto-qr" class="ayuda">Escaneá con el celu</p>
+      <button class="tecla" id="btn-cerrar-qr">Volver a la nota</button>
+    </div>
+
+    <!-- Panel para colaborar, encima del editor -->
+    <div id="panel-colab" class="panel" hidden>
+      <b class="colab-titulo">Colaborar</b>
+      <div id="colab-codigo" class="colab-bloque" hidden>
+        <p class="ayuda">Pasale este código a quien quieras sumar a la nota</p>
+        <span id="colab-mostrar" class="codigo"></span>
+        <button class="tecla" id="btn-copiar-codigo">Copiar</button>
+      </div>
+      <div id="colab-opciones" class="colab-bloque">
+        <button class="tecla" id="btn-generar">Generar código</button>
+        <p class="ayuda">o, si te pasaron uno:</p>
+        <div class="fila-codigo">
+          <input id="colab-entrada" class="buscar" placeholder="XXXX-XXXX" maxlength="9">
+          <button class="tecla" id="btn-unirme">Unirme</button>
+        </div>
+      </div>
+      <p id="colab-mensaje" class="ayuda"></p>
+      <button class="tecla" id="btn-cerrar-colab">Volver a la nota</button>
+    </div>
+  </section>
+
+</body>
+</html>

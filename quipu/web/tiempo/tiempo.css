@@ -1,0 +1,96 @@
+@font-face { font-family: Fredoka; src: url("../../assets/fuentes/Fredoka.ttf"); }
+
+* { box-sizing: border-box; }
+html { background: transparent; height: 100%; }
+body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: #CFEFF8; color: #17324D; border-radius: 9px;
+  font-family: Fredoka, "Segoe UI", sans-serif; font-size: 13px;
+}
+section { height: 100%; display: flex; flex-direction: column; gap: 7px; padding: 10px; }
+section[hidden] { display: none; }
+
+.encabezado { display: flex; align-items: center; gap: 6px; }
+.titulo { flex: 1; font-size: 17px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tecla {
+  font: inherit; font-weight: 500; cursor: pointer;
+  background: var(--tema-suave); color: var(--tema-muy-oscuro);
+  border: 1px solid var(--tema-oscuro); border-radius: 7px; padding: 3px 10px;
+}
+.tecla:hover { background: var(--tema-claro); }
+.tecla:active, .tecla.activa { background: var(--tema); color: var(--tema-texto); box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25); }
+.tecla.chica { width: 26px; height: 24px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Pronóstico */
+.mensaje { color: #4A6A82; text-align: center; margin-top: 30px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.mensaje[hidden] { display: none; }
+.actual { display: flex; align-items: center; gap: 12px; padding: 6px 4px; }
+.actual[hidden] { display: none; }
+.temp { font-size: 38px; font-weight: 600; line-height: 1; }
+.desc { color: #3A5A78; font-size: 14px; }
+.icono-grande svg { width: 58px; height: 58px; display: block; }
+.dias { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+.dia {
+  display: flex; align-items: center; gap: 8px; padding: 4px 8px;
+  background: #F4FBFD; border: 1px solid #BFDCE6; border-radius: 8px;
+}
+.dia b { width: 34px; font-weight: 600; }
+.dia svg { width: 24px; height: 24px; flex: none; }
+.dia .d { flex: 1; min-width: 0; color: #3A5A78; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dia .lluvia { color: #2F80ED; font-size: 11px; width: 32px; text-align: right; }
+.dia .mm { font-weight: 600; width: 58px; text-align: right; font-variant-numeric: tabular-nums; }
+.dia .mm i { font-style: normal; color: #6E8A9E; font-weight: 400; }
+
+/* Ajustes */
+.etiqueta { font-weight: 600; color: #3A5A78; margin-top: 2px; }
+.fila { display: flex; gap: 6px; align-items: center; }
+.fila.final { margin-top: auto; justify-content: flex-end; }
+.campo {
+  flex: 1; font: inherit; color: #17324D; outline: none;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 7px; padding: 5px 9px;
+}
+.campo:focus { border-color: var(--tema); }
+.buscador { position: relative; flex: none; }
+.resultados {
+  position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 10;
+  display: flex; flex-direction: column; gap: 3px; max-height: 170px; overflow-y: auto;
+  background: #F4FBFD; border: 1px solid #8FB9C8; border-radius: 9px; padding: 5px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+}
+.resultados[hidden] { display: none; }
+.resultados button {
+  flex: none; font: inherit; text-align: left; cursor: pointer; color: #17324D;
+  background: #FFFFFF; border: 1px solid #BFDCE6; border-radius: 7px; padding: 5px 8px;
+}
+.resultados button:hover { background: #E4F6FB; }
+.resultados small, .elegida small { color: #6E8A9E; }
+.elegida { font-size: 14px; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: #8FB9C8; border-radius: 3px; }
+
+/* --- Que la pantalla del Tiempo se pueda desplazar si el contenido no entra --- */
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto !important;
+}
+#ajustes {
+  padding-bottom: 12px;
+}
+
+/* Barra de desplazamiento finita, para que no rompa la estética de Quipu */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}

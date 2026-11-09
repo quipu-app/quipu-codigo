@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../tema.css">
+  <link rel="stylesheet" href="sonidos.css">
+  <script src="qwebchannel.js"></script>
+  <script src="sonidos.js" defer></script>
+</head>
+<body>
+  <section>
+    <header class="encabezado">
+      <span class="titulo">Sonidos</span>
+      <button class="tecla" id="btn-apagar">Apagar todo</button>
+    </header>
+
+    <div id="lista" class="lista"></div>
+
+    <div class="fila-control">
+      <span class="etiqueta">General</span>
+      <div class="control">
+        <button class="mm" id="gen-menos">−</button>
+        <span class="barras" id="gen-barras"></span>
+        <button class="mm" id="gen-mas">+</button>
+      </div>
+    </div>
+
+    <div class="fila-control">
+      <span class="etiqueta">Temporizador</span>
+      <div class="control">
+        <button class="tecla opcion" data-min="15">15'</button>
+        <button class="tecla opcion" data-min="30">30'</button>
+        <button class="tecla opcion" data-min="60">60'</button>
+      </div>
+    </div>
+    <p class="aviso-tempo" id="aviso-tempo"></p>
+  </section>
+</body>
+</html>

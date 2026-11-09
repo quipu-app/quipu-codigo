@@ -1,0 +1,73 @@
+{
+  "nombre": "Compa",
+  "titulo": "El que ajusta todo",
+  "consola": "#A0714D",
+  "detalle": "#E9B75B",
+  "frases": {
+    "saluda": "¡Guau! ¿Ajustamos algo?",
+    "festeja": "¡Quedó joya, compa!",
+    "senala": "¡Mirá, mirá!",
+    "sonrie": "Todo en su lugar",
+    "mueve_cola": "¡Qué lindo verte!",
+    "bosteza": "Una siestita y sigo…",
+    "piensa": "Mmm… ¿y si probamos otro?",
+    "foco_inicio": "¡Guau! A concentrarse, yo cuido la puerta",
+    "foco_seguimos": "¡Seguimos! Me quedo acá echadito",
+    "foco_falta_poco": "¡Ya casi! Muevo la cola de los nervios",
+    "foco_fin": "¡Guau, guau! ¡Lo lograste!",
+    "tiempo_paraguas": "Llueve… nada de paseo hoy",
+    "tiempo_frio": "Hace frío, ¡abrigate como yo con mi pelo!",
+    "tiempo_sol": "¡Día de paseo! ¿Vamos a la plaza?",
+    "tiempo_nubes": "Nublado, ideal para un paseíto corto",
+    "sonidos_hola": "¿Ponemos algo lindo?",
+    "sonidos_disfruta": "Mis orejas están felices",
+    "agenda_hola": "¡A ver qué hay hoy!",
+    "agenda_guardado": "¡Anotado! Y no lo entierro",
+    "imagen_lista": "¡Te traje la imagen!",
+    "qr_listo": "¡Tu código, como un hueso nuevo!",
+    "txt_listo": "¡Listo, compa!",
+    "ajustes_hola": "¡Acá ajustamos todo, compa!",
+    "ajustes_chau": "¡Chau, compa! Te espero en la puerta",
+    "ajustes_relevo": "¡Guau! Ahí viene el relevo",
+    "ajustes_nombre": "¡{nombre}! ¡Ya me lo aprendí!"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.45,
+      "grilla": { "columnas": 5, "cuadro_ancho": 401, "cuadro_alto": 422 },
+      "cara": { "x": 260, "y": 180 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "sonrie_der": 3,
+        "mira_izq": 4, "mira_der": 5, "saluda": 6, "agachado": 7, "salto": 8
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie_der", "agachado"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.5,
+      "grilla": { "columnas": 6, "cuadro_ancho": 487, "cuadro_alto": 539 },
+      "cara": { "x": 262, "y": 240 },
+      "cuadros": {
+        "mira_frente": 0, "mira_izq": 1, "mira_der": 2,
+        "mira_arriba": 3, "mira_abajo": 4,
+        "mira_arriba_izq": 5, "mira_arriba_der": 6,
+        "mira_abajo_izq": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "sonrie": 10, "hablando": 11,
+        "saluda": 12, "festeja": 13, "senala": 14,
+        "mueve_cola": 15, "bosteza": 16, "piensa": 17
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_abajo", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "senala", "sonrie", "mueve_cola"],
+      "acciones_solo": ["mueve_cola", "bosteza", "piensa"]
+    }
+  }
+}

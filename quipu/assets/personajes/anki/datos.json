@@ -1,0 +1,77 @@
+{
+  "nombre": "Anki",
+  "titulo": "El más tierno de la familia",
+  "consola": "#7D8B4A",
+  "detalle": "#EABF57",
+  "frases": {
+    "saluda": "¡Hola! ¿Jugamos un ratito?",
+    "festeja": "¡Yupiii!",
+    "senala": "¡Mirá, mirá!",
+    "sonrie": "Acá estoy, con vos",
+    "sorpresa": "¡Uh! ¿Qué fue eso?",
+    "pasto": "Ñam… pastito rico",
+    "lengua": "¡Qué rico!",
+    "cola": "¡Estoy re contento!",
+    "bosteza": "Un ratito de siesta…",
+    "foco_inicio": "¡Vamos! Yo te acompaño",
+    "foco_seguimos": "¡Seguimos juntos!",
+    "foco_falta_poco": "Falta poquito, ¡vos podés!",
+    "foco_fin": "¡Lo lograste! Estoy orgulloso",
+    "tiempo_paraguas": "¡Llevá paraguas, ¿sí? No quiero que te mojes!",
+    "tiempo_frio": "Brrr… ¡abrigate bien hoy!",
+    "tiempo_sol": "¡Hay solcito! Lindo para salir",
+    "tiempo_nubes": "Hay nubes… ¿jugamos a buscarles formas?",
+    "sonidos_hola": "¿Escuchamos algo lindo?",
+    "sonidos_disfruta": "Mmm, qué lindo suena…",
+    "agenda_hola": "¿Qué tenemos para hoy?",
+    "agenda_guardado": "¡Anotado! No me olvido",
+    "imagen_lista": "¡Ya puse la imagen!",
+    "qr_listo": "¡Mirá, tu código!",
+    "txt_listo": "¡Listo! Ya está",
+    "ajustes_hola": "¿Lo dejamos como te gusta?",
+    "ajustes_chau": "¡Chau! Te voy a extrañar",
+    "ajustes_relevo": "Te cuido desde lejos, ¡ahí viene alguien!",
+    "ajustes_nombre": "¡Qué lindo nombre, {nombre}!"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.7,
+      "grilla": { "columnas": 4, "cuadro_ancho": 320, "cuadro_alto": 340 },
+      "cara": { "x": 215, "y": 115 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "mira_der": 3,
+        "mira_izq": 4, "saluda": 5, "agachado": 6, "salto": 7
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.65,
+      "ajuste_asomarse": -55,
+      "grilla": { "columnas": 6, "cuadro_ancho": 430, "cuadro_alto": 300 },
+      "cara": { "x": 300, "y": 120 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "mira_arriba": 2,
+        "mira_arriba_der": 3, "mira_arriba_izq": 4, "mira_der": 5, "mira_izq": 6,
+        "mira_abajo": 0, "mira_abajo_izq": 6, "mira_abajo_der": 5,
+        "sonrie": 7, "hablando": 8, "sorpresa": 9,
+        "saluda": 10, "festeja": 11, "senala": 12,
+        "pasto": 13, "lengua": 14, "cola": 15,
+        "paraguas": 16, "frio": 17, "sol": 18, "nubes": 19, "viento": 20,
+        "bosteza": 21
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_frente", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "sonrie", "cola", "lengua"],
+      "acciones_solo": ["pasto", "bosteza", "cola"]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "nombre": "Luna",
+  "titulo": "La que nunca se olvida",
+  "consola": "#8E90A3",
+  "detalle": "#B3DA55",
+  "frases": {
+    "saluda": "Miau. Ah, sos vos",
+    "festeja": "¡Bien ahí!",
+    "senala": "Mirá eso",
+    "sonrie": "Todo bajo control",
+    "maulla": "¡Miau!",
+    "sorpresa": "¿Eh? ¿Qué pasó?",
+    "lame": "Un segundito, me estoy arreglando",
+    "estira": "Mmmh… qué buena estirada",
+    "siesta": "Despertame si pasa algo…",
+    "campana": "¡Ding! Tenés algo pendiente",
+    "calendario": "A ver qué tenemos hoy…",
+    "tacha": "Listo, uno menos",
+    "foco_inicio": "Dale, yo vigilo el reloj",
+    "foco_seguimos": "Seguí, que yo no me duermo… creo",
+    "foco_falta_poco": "Ya casi, no te distraigas",
+    "foco_fin": "¡Terminaste! Ahora sí, siesta",
+    "tiempo_paraguas": "Llueve. Ni loca salgo",
+    "tiempo_frio": "Hace frío, mejor cerca de la estufa",
+    "tiempo_sol": "Sol… ideal para tirarme en la ventana",
+    "tiempo_nubes": "Nublado. Día de siesta",
+    "sonidos_hola": "A ver si hay algo que me guste…",
+    "sonidos_disfruta": "Mmm… no está mal",
+    "agenda_hola": "A ver qué tenemos hoy…",
+    "agenda_guardado": "Anotado. Yo me acuerdo, vos tranquilo",
+    "imagen_lista": "Ahí está tu imagen",
+    "qr_listo": "Tu código. De nada",
+    "txt_listo": "Listo. Ahora dejame dormir",
+    "ajustes_hola": "Cambiá lo que quieras, igual hago lo que quiero",
+    "ajustes_chau": "Bueno, chau. Cerrá la puerta",
+    "ajustes_relevo": "Me voy a dormir. Que venga otro",
+    "ajustes_nombre": "{nombre}. Mmm… me lo voy a acordar"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.55,
+      "grilla": { "columnas": 4, "cuadro_ancho": 440, "cuadro_alto": 460 },
+      "cara": { "x": 215, "y": 170 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "mira_izq": 3,
+        "mira_der": 4, "saluda": 5, "agachado": 6, "salto": 7
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.55,
+      "ajuste_asomarse": -20,
+      "grilla": { "columnas": 6, "cuadro_ancho": 460, "cuadro_alto": 430 },
+      "cara": { "x": 230, "y": 180 },
+      "cuadros": {
+        "mira_arriba_izq": 0, "mira_arriba": 1, "mira_arriba_der": 2,
+        "mira_izq": 3, "mira_frente": 4, "mira_der": 5,
+        "mira_abajo_izq": 6, "mira_abajo": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "hablando": 10, "maulla": 11, "sonrie": 12, "sorpresa": 13,
+        "saluda": 14, "festeja": 15, "senala": 16,
+        "campana": 17, "calendario": 18, "tacha": 19,
+        "lame": 20, "estira": 21, "siesta": 22
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_frente", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "maulla", "festeja", "sonrie", "senala"],
+      "acciones_solo": ["lame", "estira", "siesta", "calendario"]
+    }
+  }
+}

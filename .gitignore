@@ -1,0 +1,33 @@
+# Entorno virtual de Python (se vuelve a crear con pip; pesa mucho)
+.venv/
+venv/
+
+# Archivos temporales que genera Python solo
+__pycache__/
+*.pyc
+
+# Resultados de la compilación (se generan de nuevo cada vez)
+build/
+dist/
+instalador/
+
+# Scripts viejos de prueba
+_sobrantes/
+
+# Configuración propia de PyCharm
+.idea/
+
+# Datos locales y registros (pueden tener información personal)
+*.db
+*.log
+
+# Archivos que crea Windows en las carpetas
+Thumbs.db
+desktop.ini
+
+# La página web (tiene su propio repositorio) y sus scripts
+sitio/
+ajustar_sitio.py
+armar_descargables.py
+armar_sitio_imagenes.py
+borrar_repetidos.py

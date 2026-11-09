@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../tema.css">
+  <link rel="stylesheet" href="tiempo.css">
+  <script src="qwebchannel.js"></script>
+  <script src="tiempo.js" defer></script>
+</head>
+<body>
+
+  <!-- Pronóstico -->
+  <section id="pronostico">
+    <header class="encabezado">
+      <span class="titulo" id="ciudad">Tiempo</span>
+      <button class="tecla chica" id="btn-ajustes" title="Ajustes">⚙</button>
+    </header>
+    <div id="cargando" class="mensaje">Consultando el tiempo…</div>
+    <div id="error" class="mensaje" hidden>
+      <span id="texto-error"></span>
+      <button class="tecla" id="btn-reintentar">Reintentar</button>
+    </div>
+    <div id="actual" class="actual" hidden>
+      <span id="icono-actual" class="icono-grande"></span>
+      <div>
+        <div class="temp" id="temp-actual"></div>
+        <div class="desc" id="desc-actual"></div>
+      </div>
+    </div>
+    <div id="dias" class="dias"></div>
+  </section>
+
+  <!-- Ajustes -->
+  <section id="ajustes" hidden>
+    <header class="encabezado">
+      <button class="tecla chica" id="btn-volver" title="Volver">‹</button>
+      <span class="titulo">Ajustes del Tiempo</span>
+    </header>
+    <label class="etiqueta">Ciudad</label>
+    <div class="buscador">
+      <div class="fila">
+        <input id="buscar" class="campo" placeholder="Escribí tu ciudad">
+        <button class="tecla" id="btn-buscar">Buscar</button>
+      </div>
+      <div id="resultados" class="resultados" hidden></div>
+    </div>
+    <div id="elegida" class="elegida"></div>
+    <label class="etiqueta">Unidad</label>
+    <div class="fila">
+      <button class="tecla opcion" data-unidad="C">°C</button>
+      <button class="tecla opcion" data-unidad="F">°F</button>
+    </div>
+    <label class="etiqueta">Días</label>
+    <div class="fila">
+      <button class="tecla opcion" data-dias="3">3</button>
+      <button class="tecla opcion" data-dias="5">5</button>
+    </div>
+    <div class="fila final">
+      <button class="tecla" id="btn-guardar">Guardar</button>
+    </div>
+  </section>
+
+</body>
+</html>

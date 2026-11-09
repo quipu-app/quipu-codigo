@@ -1,0 +1,74 @@
+{
+  "nombre": "María Remedios del Valle",
+  "titulo": "La capitana de Quipu",
+  "consola": "#76A7D5",
+  "detalle": "#EEC458",
+  "frases": {
+    "saluda": "¡Buenas! ¿Cómo andamos?",
+    "festeja": "¡Así se hace!",
+    "senala": "Mirá esto",
+    "sonrie": "Vamos de a poco",
+    "mate": "Un mate y seguimos",
+    "bosteza": "Un descansito…",
+    "piensa": "Dejame ver…",
+    "foco_inicio": "¡Adelante!",
+    "foco_seguimos": "¡Seguimos firmes!",
+    "foco_falta_poco": "Ya casi, no aflojes",
+    "foco_fin": "¡Misión cumplida!",
+    "tiempo_paraguas": "Llueve: paraguas en mano y adelante",
+    "tiempo_frio": "Hace frío, abrigate bien antes de salir",
+    "tiempo_sol": "¡Día despejado, a marchar!",
+    "tiempo_nubes": "Nublado, pero el ánimo no se nubla",
+    "sonidos_hola": "¿Qué sonido nos acompaña?",
+    "sonidos_disfruta": "Así da gusto trabajar",
+    "agenda_hola": "Revisemos las órdenes del día",
+    "agenda_guardado": "¡Anotado y en orden!",
+    "imagen_lista": "Imagen en su lugar",
+    "qr_listo": "Código listo, a sus órdenes",
+    "txt_listo": "Archivo listo",
+    "ajustes_hola": "Ajustemos todo a tu medida",
+    "ajustes_chau": "¡Hasta la próxima misión!",
+    "ajustes_relevo": "Entrego el mando: ¡ahí viene el relevo!",
+    "ajustes_nombre": "¡Un honor, {nombre}!"
+},
+  "hojas": {
+    "cuerpo": {
+      "sprite": "cuerpo.png",
+      "escala": 0.35,
+      "grilla": { "columnas": 5, "cuadro_ancho": 491, "cuadro_alto": 874 },
+      "cara": { "x": 245, "y": 80 },
+      "cuadros": {
+        "mira_frente": 0, "parpadeo": 1, "sonrie": 2, "mira_izq": 3,
+        "mira_der": 4, "saluda": 5, "agachado": 6, "salto": 7
+      },
+      "direcciones": [
+        "mira_der", "mira_der", "mira_frente", "mira_izq",
+        "mira_izq", "mira_izq", "mira_frente", "mira_der"
+      ],
+      "acciones_al_tocar": ["saluda", "sonrie"],
+      "acciones_solo": ["saluda", "sonrie"]
+    },
+    "medio": {
+      "sprite": "medio.png",
+      "escala": 0.55,
+      "ajuste_asomarse": -20,
+      "grilla": { "columnas": 6, "cuadro_ancho": 436, "cuadro_alto": 432 },
+      "cara": { "x": 218, "y": 150 },
+      "cuadros": {
+        "mira_frente": 0, "mira_izq": 1, "mira_der": 2,
+        "mira_arriba": 3, "mira_abajo": 4,
+        "mira_arriba_izq": 5, "mira_arriba_der": 6,
+        "mira_abajo_izq": 7, "mira_abajo_der": 8,
+        "parpadeo": 9, "sonrie": 10, "hablando": 11,
+        "saluda": 12, "festeja": 13, "senala": 14,
+        "mate": 15, "bosteza": 16, "piensa": 17
+      },
+      "direcciones": [
+        "mira_der", "mira_abajo_der", "mira_frente", "mira_abajo_izq",
+        "mira_izq", "mira_arriba_izq", "mira_arriba", "mira_arriba_der"
+      ],
+      "acciones_al_tocar": ["saluda", "festeja", "senala", "sonrie", "mate"],
+      "acciones_solo": ["mate", "bosteza", "piensa"]
+    }
+  }
+}

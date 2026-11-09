@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="ajustes.css">
+  <link rel="stylesheet" href="../tema.css">
+  <script src="qwebchannel.js"></script>
+  <script src="ajustes.js" defer></script>
+</head>
+<body>
+  <section>
+    <header class="encabezado"><span class="titulo">Ajustes</span></header>
+
+    <h2 class="primero">Personaje</h2>
+    <div class="carrusel">
+      <button class="flecha" id="anterior" aria-label="Personaje anterior">‹</button>
+        <div class="carta">
+          <canvas id="carta-lienzo"></canvas>
+          <div class="carta-nombre" id="carta-nombre"></div>
+          <div class="carta-titulo" id="carta-titulo"></div>
+          <div class="carta-colores">Consola <i id="color-1"></i><i id="color-2"></i></div>
+          <div class="puntos" id="puntos"></div>
+        </div>
+      <button class="flecha" id="siguiente" aria-label="Personaje siguiente">›</button>
+    </div>
+    <button class="elegir" id="btn-elegir">Elegir</button>
+    <h2>Tu nombre</h2>
+    <div class="fila">
+      <input id="nombre" class="campo" maxlength="20" placeholder="¿Cómo te llamás?">
+      <button class="tecla" id="btn-nombre">Guardar</button>
+    </div>
+    <p class="ayuda">Es como te van a ver en las notas que compartas.</p>
+
+    <h2>Sonido</h2>
+    <div class="fila">
+      <span class="etiqueta">Teclas</span>
+      <div class="control">
+        <button class="mm" data-clave="volumen_teclas" data-paso="-1">−</button>
+        <span class="barras" id="barras-teclas"></span>
+        <button class="mm" data-clave="volumen_teclas" data-paso="1">+</button>
+      </div>
+    </div>
+    <div class="fila">
+      <span class="etiqueta">Avisos</span>
+      <div class="control">
+        <button class="mm" data-clave="volumen_avisos" data-paso="-1">−</button>
+        <span class="barras" id="barras-avisos"></span>
+        <button class="mm" data-clave="volumen_avisos" data-paso="1">+</button>
+      </div>
+    </div>
+    <span class="etiqueta">Sonido de teclas</span>
+    <div class="opciones" id="tipos"></div>
+
+    <h2>Datos</h2>
+    <div class="fila">
+      <span class="etiqueta">Carpeta de Quipu</span>
+      <button class="tecla" id="btn-carpeta">Abrir carpeta</button>
+    </div>
+
+    <h2>Versión</h2>
+    <div class="fila">
+      <span class="etiqueta" id="version">Quipu</span>
+      <button class="tecla" id="btn-actualizar" style="display:none">Actualizar</button>
+    </div>
+
+    <div class="pie"><button class="salir" id="btn-salir">Salir de Quipu</button></div>
+  </section>
+</body>
+</html>

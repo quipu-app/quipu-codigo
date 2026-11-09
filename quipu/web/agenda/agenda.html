@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../tema.css">
+  <link rel="stylesheet" href="agenda.css">
+  <script src="qwebchannel.js"></script>
+  <script src="agenda.js" defer></script>
+</head>
+<body>
+
+  <!-- El mes -->
+  <section id="vista-mes">
+    <header class="encabezado">
+      <button class="tecla chica" id="btn-anterior" title="Mes anterior">‹</button>
+      <span class="titulo" id="titulo-mes"></span>
+      <button class="tecla chica" id="btn-siguiente" title="Mes siguiente">›</button>
+      <button class="tecla" id="btn-nuevo">+ Evento</button>
+    </header>
+    <div class="pregunta" id="pregunta" hidden>
+      <i id="p-color"></i><b id="p-texto"></b>
+      <div class="p-botones">
+        <button class="tecla" id="p-si">Sí</button>
+        <button class="tecla" id="p-no">No</button>
+        <button class="tecla" id="p-repro">Reprogramar</button>
+      </div>
+    </div>
+    <div class="semana"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+    <div class="grilla" id="grilla"></div>
+    <div class="del-dia">
+      <b id="nombre-dia"></b>
+      <div id="lista-dia" class="lista-dia"></div>
+    </div>
+  </section>
+
+  <!-- Nuevo o editar evento -->
+  <section id="vista-form" hidden>
+    <header class="encabezado">
+      <button class="tecla chica" id="btn-volver" title="Volver">‹</button>
+      <span class="titulo" id="titulo-form">Nuevo evento</span>
+    </header>
+    <input id="f-titulo" class="campo" placeholder="¿Qué tenés?">
+    <div class="fila">
+      <input id="f-fecha" class="campo" type="date">
+      <input id="f-hora" class="campo chico" type="time">
+      <label class="check"><input type="checkbox" id="f-todo-dia"> Todo el día</label>
+    </div>
+    <div class="fila"><span class="etiqueta">Avisar</span><div class="opciones" id="f-aviso"></div></div>
+    <div class="fila"><span class="etiqueta">Repetir</span><div class="opciones" id="f-repetir"></div></div>
+    <div class="fila"><span class="etiqueta">Color</span><div class="colores" id="f-color"></div></div>
+    <div class="fila final">
+      <button class="tecla" id="btn-borrar" hidden>Borrar</button>
+      <button class="tecla" id="btn-guardar">Guardar</button>
+    </div>
+  </section>
+
+</body>
+</html>
