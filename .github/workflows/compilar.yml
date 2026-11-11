@@ -33,8 +33,29 @@ jobs:
         run: |
           & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" quipu.iss
 
+      - name: Armar el paquete de la Microsoft Store
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force paquete | Out-Null
+          Copy-Item -Recurse -Force dist\Quipu\* paquete\
+          Copy-Item -Force tienda\AppxManifest.xml paquete\
+          Copy-Item -Recurse -Force tienda\imagenes paquete\
+          $makeappx = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin" -Recurse -Filter makeappx.exe |
+              Where-Object { $_.FullName -match '\\x64\\' } |
+              Sort-Object FullName -Descending |
+              Select-Object -First 1 -ExpandProperty FullName
+          Write-Host "Usando: $makeappx"
+          & $makeappx pack /d paquete /p Quipu.msix /o
+          if ($LASTEXITCODE -ne 0) { throw "No se pudo armar el paquete MSIX" }
+
       - name: Guardar el instalador
         uses: actions/upload-artifact@v4
         with:
           name: Instalar-Quipu
           path: instalador/Instalar-Quipu.exe
+
+      - name: Guardar el paquete de la Store
+        uses: actions/upload-artifact@v4
+        with:
+          name: Quipu-Store
+          path: Quipu.msix

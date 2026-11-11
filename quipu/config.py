@@ -84,3 +84,21 @@ FRASES_COMUNES = {
     "agenda_hola": "A ver qué tenemos…",
     "agenda_guardado": "¡Anotado!",
 }
+
+import ctypes
+import sys
+
+
+def _en_tienda() -> bool:
+    """True si Quipu está corriendo instalado desde la Microsoft Store (paquete MSIX)."""
+    if sys.platform != "win32":
+        return False
+    try:
+        largo = ctypes.c_uint32(0)
+        resultado = ctypes.windll.kernel32.GetCurrentPackageFullName(ctypes.byref(largo), None)
+        return resultado != 15700          # 15700 = "este programa no está en un paquete"
+    except (AttributeError, OSError):
+        return False                       # Windows viejo sin esta función: no es de la Store
+
+
+EN_TIENDA = _en_tienda()   # se calcula una sola vez, al arrancar Quipu

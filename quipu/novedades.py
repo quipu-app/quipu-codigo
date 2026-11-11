@@ -50,7 +50,7 @@ class Novedades(QObject):
                 self.anunciar(mensaje)
                 espera = 9000                         # que no se pisen dos avisos seguidos
         version = d.get("version", "")
-        if d.get("descarga") and numero(version) > numero(config.VERSION):
+        if d.get("descarga") and numero(version) > numero(config.VERSION) and not config.EN_TIENDA:
             self.nueva = {"version": version, "descarga": d["descarga"]}
             self.cambio.emit()
             if not self._anunciada:
