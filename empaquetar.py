@@ -10,7 +10,9 @@ sep = os.pathsep                       # en Windows, ";" separa origen y destino
 # Controles antes de armar
 if not (raiz / "firebase.json").exists():
     raise SystemExit("Falta quipu/firebase.json: sin él, Colaborar no anda en el programa.")
-sobrantes = list(raiz.rglob("*.antes"))
+if not (raiz / "sincronizacion" / "credenciales_google.json").exists():
+    raise SystemExit("Falta quipu/sincronizacion/credenciales_google.json: sin él, no se puede conectar Google Drive.")
+sobrantes = list(raiz.rglob("*.antes")) + list(raiz.rglob("*.antes2"))
 if sobrantes:
     print(f"Aviso: hay {len(sobrantes)} archivos .antes que van a viajar dentro del programa.\n")
 
@@ -38,6 +40,10 @@ argumentos = [
     "--add-data", f"{raiz / 'assets'}{sep}assets",   # personajes, consolas, sonidos y fuentes
     "--add-data", f"{raiz / 'web'}{sep}web",         # las pantallas HTML
     "--add-data", f"{raiz / 'firebase.json'}{sep}.", # la conexión con Firebase
+    "--add-data", f"{raiz / 'sincronizacion' / 'credenciales_google.json'}{sep}sincronizacion",  # Google Drive
+    "--collect-data", "googleapiclient",             # las descripciones de las APIs de Google
+    "--hidden-import", "sincronizacion.google_drive",
+    "--hidden-import", "sincronizacion.motor",
 ]
 for modulo in sorted(ocultos):
     argumentos += ["--hidden-import", modulo]

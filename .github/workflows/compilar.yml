@@ -22,6 +22,14 @@ jobs:
       - name: Instalar las librerías
         run: python -m pip install -r requirements.txt
 
+      - name: Poner las credenciales de Google (desde el secreto del repositorio)
+        shell: pwsh
+        env:
+          CREDENCIALES: ${{ secrets.GOOGLE_CREDENCIALES }}
+        run: |
+          if (-not $env:CREDENCIALES) { throw "Falta el secreto GOOGLE_CREDENCIALES" }
+          [IO.File]::WriteAllText("quipu/sincronizacion/credenciales_google.json", $env:CREDENCIALES)
+
       - name: Armar Quipu con PyInstaller
         run: pyinstaller Quipu.spec --clean --noconfirm
 

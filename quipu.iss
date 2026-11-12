@@ -3,11 +3,11 @@
 [Setup]
 AppId={{7C3E2A91-4B5D-4F8E-9A21-6D0B3C8E5F14}
 AppName=Quipu
-AppVersion=1.0.2
+AppVersion=1.1.0
 AppPublisher=Eric
 AppPublisherURL=https://quipu-app.github.io
 AppSupportURL=https://quipu-app.github.io
-VersionInfoVersion=1.0.2
+VersionInfoVersion=1.1.0
 VersionInfoCompany=Quipu
 VersionInfoDescription=Instalador de Quipu
 VersionInfoProductName=Quipu

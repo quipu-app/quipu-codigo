@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 
-VERSION = "1.0.2"   # subirla en cada publicación (y también en quipu.iss)
+VERSION = "1.1.0"   # subirla en cada publicación (y también en quipu.iss)
 
 # --- Rutas -------------------------------------------------------------------
 BASE = Path(__file__).resolve().parent

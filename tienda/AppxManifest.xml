@@ -8,7 +8,7 @@
   <Identity
     Name="QuipuEstudio.Quipu-Asistentedeescritorio"
     Publisher="CN=41B891C6-4663-4268-B15E-CD04D6A86A60"
-    Version="1.0.3.0"
+    Version="1.1.0.0"
     ProcessorArchitecture="x64" />
 
   <Properties>
