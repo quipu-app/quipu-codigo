@@ -97,4 +97,8 @@ class Bandeja(QSystemTrayIcon):
 
     def _cerrar(self):
         self.hide()                                  # que no quede la Q fantasma junto al reloj
-        QApplication.quit()
+        modulo_ajustes = self.director.consola.modulos.get("ajustes")
+        if modulo_ajustes:
+            modulo_ajustes.salir_sincronizando()     # sube lo pendiente y después cierra
+        else:
+            QApplication.quit()

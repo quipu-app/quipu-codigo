@@ -31,3 +31,6 @@ ajustar_sitio.py
 armar_descargables.py
 armar_sitio_imagenes.py
 borrar_repetidos.py
+credenciales_google.json
+*.antes
+*.antes2

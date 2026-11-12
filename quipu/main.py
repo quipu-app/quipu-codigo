@@ -38,6 +38,7 @@ def main():
     novedades = Novedades(director)        # mensajes y versiones nuevas desde Firebase
     modulo_ajustes = consola.modulos["ajustes"]
     modulo_ajustes.novedades = novedades
+    modulo_ajustes.consola = consola
     novedades.cambio.connect(lambda: modulo_ajustes.puente.cambio.emit(modulo_ajustes.puente.estado()))
 
     if primer_uso:

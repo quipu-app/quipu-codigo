@@ -16,6 +16,8 @@ VALORES_INICIALES = {
     "mensaje_visto": "",       # el último mensaje de novedades que se mostró
     "mensaje_veces": 0,        # cuántas veces se mostró (hasta 3)
     "personaje_escondido": False,  # True = solo la Q en la bandeja, sin personaje en el escritorio
+    "ultima_sincronizacion": 0,    # cuándo se sincronizó con Drive por última vez (0 = nunca)
+    "nombre_cambiado": 0,          # cuándo se cambió el nombre (viaja con el nombre a Drive)
 }
 
 

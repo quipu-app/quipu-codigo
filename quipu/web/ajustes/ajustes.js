@@ -55,6 +55,35 @@ function dibujar(e) {
   b.style.display = e.nueva ? "" : "none";
   if (e.descargando) { b.disabled = true; b.textContent = "Descargando…"; }
   else if (b.disabled) { b.disabled = false; b.textContent = "Actualizar"; }
+  dibujarDrive(e);
+}
+
+// --- Google Drive ------------------------------------------------------------------------
+function cuando(segundos) {
+  if (!segundos) return "Todavía no se sincronizó";
+  const f = new Date(segundos * 1000);
+  const hora = f.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" });
+  const hoy = new Date().toDateString() === f.toDateString();
+  return "Última vez: " + (hoy ? "hoy " + hora : f.toLocaleDateString("es-AR") + " " + hora);
+}
+
+function dibujarDrive(e) {
+  const conectar = $("btn-drive"), sincro = $("btn-sincro");
+  $("fila-sincro").style.display = e.drive ? "" : "none";
+  $("drive-ayuda").style.display = e.drive ? "none" : "";
+  $("sincro-estado").textContent = e.sin_conexion ? "Sin conexión: reintento en un rato" : cuando(e.ultima_sincro);
+  if (e.sincronizando) {
+    conectar.disabled = true;
+    sincro.disabled = true;
+    sincro.textContent = "Sincronizando…";
+    if (!e.drive) conectar.textContent = "Esperando a Google…";
+  } else {
+    conectar.disabled = false;
+    sincro.disabled = false;
+    sincro.textContent = "Sincronizar ahora";
+    if (Date.now() >= confirmarDesconectar) conectar.textContent = e.drive ? "Desconectar" : "Conectar";
+  }
+  conectado = e.drive;
 }
 
 // --- El ritual al elegir: escaneo, captura y lluvia de código -------------------------
@@ -252,6 +281,23 @@ document.querySelectorAll(".mm").forEach((b) => {
   b.onclick = () => puente.volumen(b.dataset.clave, Number(b.dataset.paso));
 });
 $("btn-carpeta").onclick = () => puente.abrir_carpeta();
+
+// Drive: conectar abre el navegador; desconectar pide un segundo toque
+let conectado = false;
+let confirmarDesconectar = 0;
+$("btn-drive").onclick = () => {
+  const b = $("btn-drive");
+  if (!conectado) { puente.conectar_drive(); return; }
+  if (Date.now() < confirmarDesconectar) {
+    confirmarDesconectar = 0;
+    puente.desconectar_drive();
+    return;
+  }
+  confirmarDesconectar = Date.now() + 3000;
+  b.textContent = "¿Seguro? Tocá de nuevo";
+  setTimeout(() => { if (conectado) b.textContent = "Desconectar"; }, 3000);
+};
+$("btn-sincro").onclick = () => puente.sincronizar_ahora();
 
 // Salir pide un segundo toque, para no cerrar Quipu sin querer
 let confirmarHasta = 0;
