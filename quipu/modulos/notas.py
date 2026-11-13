@@ -150,6 +150,20 @@ class Puente(QObject):
         self.modulo.proceso.emit("Creando carpeta", "Creada")
         return carpeta_id
 
+    @Slot(int, str, str, result=bool)
+    def editar_carpeta(self, carpeta_id: int, nombre: str, color: str) -> bool:
+        nombre = nombre.strip()
+        if not nombre:
+            return False
+        self.almacen.editar_carpeta(carpeta_id, nombre, color)
+        self.modulo.proceso.emit("Guardando carpeta", "Guardada")
+        return True
+
+    @Slot(int)
+    def borrar_carpeta(self, carpeta_id: int):
+        self.almacen.borrar_carpeta(carpeta_id)
+        self.modulo.proceso.emit("Borrando carpeta", "Borrada")
+
     @Slot(str)
     def ordenar(self, ids_json: str):
         """Guarda el orden de las notas después de arrastrarlas."""

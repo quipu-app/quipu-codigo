@@ -1,8 +1,8 @@
 # Datos que Windows muestra en Propiedades → Detalles de Quipu.exe
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 1, 0, 0),
-    prodvers=(1, 1, 0, 0),
+    filevers=(1, 2, 0, 0),
+    prodvers=(1, 2, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -15,12 +15,12 @@ VSVersionInfo(
       StringTable('2C0A04B0', [
         StringStruct('CompanyName', 'Quipu'),
         StringStruct('FileDescription', 'Quipu - asistente de escritorio'),
-        StringStruct('FileVersion', '1.1.0'),
+        StringStruct('FileVersion', '1.2.0'),
         StringStruct('InternalName', 'Quipu'),
         StringStruct('LegalCopyright', 'Copyright 2026 Eric'),
         StringStruct('OriginalFilename', 'Quipu.exe'),
         StringStruct('ProductName', 'Quipu'),
-        StringStruct('ProductVersion', '1.1.0')
+        StringStruct('ProductVersion', '1.2.0')
       ])
     ]),
     VarFileInfo([VarStruct('Translation', [0x2C0A, 1200])])

@@ -153,6 +153,8 @@ section[hidden] { display: none; }
 /* Camino de vuelta al estar adentro de una carpeta */
 .migas { display: flex; align-items: center; gap: 6px; flex: none; font-size: 15px; font-weight: 600; }
 .migas[hidden] { display: none; }
+#btn-editar-carpeta { margin-left: auto; }
+#btn-editar-carpeta, #btn-borrar-carpeta { width: auto; padding: 3px 10px; font-size: 13px; }
 
 /* Tarjetas de carpetas */
 .grilla { flex: 1; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: start; }

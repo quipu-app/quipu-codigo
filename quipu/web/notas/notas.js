@@ -12,6 +12,8 @@ let alineacion = 0;
 const COLORES = ["#17324D", "#E5484D", "#F2994A", "#27AE60", "#2F80ED", "#9B51E0"];
 const COLORES_CARPETA = ["#E5484D", "#F2994A", "#F2C230", "#3BB54A", "#3FA9F5", "#9B7BFF"];
 let colorCarpeta = COLORES_CARPETA[0];
+let editandoCarpeta = null;   // id de la carpeta que se está editando, o null si se crea una nueva
+let confirmarBorrarCarpeta = 0;
 const RESALTADO = "#FFF176";
 const ALINEACIONES = ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"];
 const ICONOS_ALINEAR = {
@@ -372,6 +374,8 @@ function exportarTxt() {
 
 // --- Crear carpetas -----------------------------------------------------------------
 function abrirPanelCarpeta() {
+  editandoCarpeta = null;
+  $("btn-crear-carpeta").textContent = "Crear";
   $("panel-carpeta").hidden = false;
   $("nombre-carpeta").value = "";
   colorCarpeta = COLORES_CARPETA[carpetas.length % COLORES_CARPETA.length];   // propone el siguiente color
@@ -390,9 +394,46 @@ function dibujarColoresCarpeta() {
 function crearCarpeta() {
   const nombre = $("nombre-carpeta").value.trim();
   if (!nombre) { $("nombre-carpeta").focus(); return; }
+  if (editandoCarpeta !== null) {
+    puente.editar_carpeta(editandoCarpeta, nombre, colorCarpeta, () => {
+      $("panel-carpeta").hidden = true;
+      editandoCarpeta = null;
+      cargarInicio();
+    });
+    return;
+  }
   puente.crear_carpeta(nombre, colorCarpeta, () => {
     $("panel-carpeta").hidden = true;
     cambiarVista("carpetas");                 // te lleva a ver la carpeta nueva
+  });
+}
+
+// --- Editar y borrar la carpeta abierta ---------------------------------------------
+function abrirEditarCarpeta() {
+  const c = carpetas.find((x) => x.id === carpetaAbierta);
+  if (!c) return;
+  editandoCarpeta = c.id;
+  $("btn-crear-carpeta").textContent = "Guardar";
+  $("panel-carpeta").hidden = false;
+  $("nombre-carpeta").value = c.nombre;
+  colorCarpeta = c.color;
+  dibujarColoresCarpeta();
+  $("nombre-carpeta").focus();
+}
+
+function borrarCarpeta() {
+  const boton = $("btn-borrar-carpeta");
+  if (Date.now() > confirmarBorrarCarpeta) {          // primer toque: pide confirmar
+    confirmarBorrarCarpeta = Date.now() + 3000;
+    boton.textContent = "¿Seguro? Tocá de nuevo";
+    setTimeout(() => { boton.textContent = "Borrar"; }, 3000);
+    return;
+  }
+  confirmarBorrarCarpeta = 0;
+  boton.textContent = "Borrar";
+  puente.borrar_carpeta(carpetaAbierta, () => {
+    $("panel-carpeta").hidden = true;
+    cambiarVista("carpetas");
   });
 }
 
@@ -469,6 +510,8 @@ $("btn-cerrar-qr").onclick = () => { $("panel-qr").hidden = true; };
 $("btn-carpeta-nueva").onclick = abrirPanelCarpeta;
 $("btn-cancelar-carpeta").onclick = () => { $("panel-carpeta").hidden = true; };
 $("btn-crear-carpeta").onclick = crearCarpeta;
+$("btn-editar-carpeta").onclick = abrirEditarCarpeta;
+$("btn-borrar-carpeta").onclick = borrarCarpeta;
 $("nombre-carpeta").addEventListener("keydown", (e) => { if (e.key === "Enter") crearCarpeta(); });
 $("btn-colaborar").onclick = abrirColaborar;
 $("btn-generar").onclick = generarCodigo;

@@ -54,6 +54,16 @@ class Almacen:
         self.db.commit()
         return cur.lastrowid
 
+    def editar_carpeta(self, carpeta_id: int, nombre: str, color: str):
+        self.db.execute("UPDATE carpetas SET nombre = ?, color = ? WHERE id = ?", (nombre, color, carpeta_id))
+        self.db.commit()
+
+    def borrar_carpeta(self, carpeta_id: int):
+        """Borrado suave (así viaja por Drive). Sus notas no se borran: quedan sueltas."""
+        self.db.execute("UPDATE notas SET carpeta_id = NULL WHERE carpeta_id = ?", (carpeta_id,))
+        self.db.execute("UPDATE carpetas SET borrada = 1 WHERE id = ?", (carpeta_id,))
+        self.db.commit()
+
     def contar_notas(self, carpeta_id) -> int:
         return self.db.execute("SELECT COUNT(*) FROM notas WHERE borrada = 0 AND carpeta_id = ?",
                                (carpeta_id,)).fetchone()[0]
